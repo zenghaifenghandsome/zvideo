@@ -3,21 +3,12 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import {Button, Layout, Menu} from "antd";
+import { RouterProvider } from 'react-router-dom'
+import routes from './router/routes.jsx'
+import menuItem from './config/menu.js';
 
 function App() {
   const {Header,Content,Footer} = Layout
-  const menuItem = [
-    {
-      key:"/home",
-      label:'home'
-    },{
-      key:"/video",
-      label:"video"
-    },{
-      key:"/user",
-      label:"user"
-    }
-  ]
   return (
     <Layout>
       <Header style={{
@@ -31,7 +22,7 @@ function App() {
         <Menu mode='horizontal' items={menuItem} theme='dark'/>
       </Header>
       <Content style={{height:'100vh'}}>
-        <Button type='primary'>antd</Button>
+        <RouterProvider router={routes} />
       </Content>
       <Footer></Footer>
     </Layout>
