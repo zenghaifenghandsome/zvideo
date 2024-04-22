@@ -6,8 +6,8 @@ const menuItem = [
       key:"/video",
       label:"video"
     },{
-      key:"/user1",
-      label:"user1"
+      key:"/user",
+      label:"user"
     },{
         key:"/user2",
         label:"user2"

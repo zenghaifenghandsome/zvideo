@@ -1,14 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import {Button, Layout, Menu} from "antd";
-import { RouterProvider } from 'react-router-dom'
-import routes from './router/routes.jsx'
+
 import menuItem from './config/menu.js';
+import { Outlet, useNavigate} from 'react-router-dom';
+import { useEffect } from 'react';
 
 function App() {
   const {Header,Content,Footer} = Layout
+  const nav = useNavigate();
+
+  useEffect(()=>{
+    nav('/home')
+  },[])
   return (
     <Layout>
       <Header style={{
@@ -19,10 +23,15 @@ function App() {
         display:'flex',
         alignItems:'center'}}>
         <div> <Button type='primary'>antd</Button></div>
-        <Menu mode='horizontal' items={menuItem} theme='dark'/>
+        <Menu 
+          mode='horizontal' items={menuItem} theme='dark'
+          defaultOpenKeys={'/home'}
+          defaultSelectedKeys={'/home'}
+          onClick={(key) => nav(key.key)}
+          />
       </Header>
       <Content style={{height:'100vh'}}>
-        <RouterProvider router={routes} />
+        <Outlet />
       </Content>
       <Footer></Footer>
     </Layout>
